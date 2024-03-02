@@ -1,0 +1,13 @@
+SELECT staffNo,fName,lName,position FROM Staff WHERE salary>(SELECT AVG(salary) From Staff);
+SELECT branchNO,COUNT(staffNO),SUM(salary) FROM Staff GROUP BY BranchNo HAVING  COUNT(staffNo)>1;
+SELECT * FROM Staff WHERE branchNo='B003' AND salary>(SELECT salary FROM Staff WHERE branchNo='B003' ORDER BY salary Limit 1); 
+SELECT fName, lName,s.branchNo, salary FROM Staff s join branch b ON s.branchNo=b.branchNo WHERE b.city='London'ORDER BY salary DESC;
+SELECT b.city FROM branch b JOIN Staff s ON s.branchNo=b.branchNo WHERE salary<20000 AND sex='M' ORDER BY city;
+SELECT max(salary)-min(salary) From branch b JOIN Staff s ON s.branchNo=b.branchNo WHERE  b.city='London' OR b.city='Glasgow';
+SELECT * FROM Viewing WHERE comment ='';
+SELECT COUNT(DISTINCT propertyNo) FROM Viewing;
+SELECT * FROM Client where eMail LIKE '%gmail%';
+SELECT type,SUM(rooms) FROM PropertyForRent GROUP BY type;
+SELECT branchNo,COUNT(sex) FROM Staff GROUP BY branchNo HAVING COUNT(sex)>1;
+SELECT COUNT(propertyNO) FROM PropertyForRent WHERE rent>450;
+SELECT COUNT(position),SUM(salary) FROM Staff where position='Manager';
